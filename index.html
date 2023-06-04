@@ -15,11 +15,21 @@
         a {
             color: azure;
         }
+
+        .c-item {
+            height: 480px;
+            width: 1450px;
+        }
+
+        .c-image {
+            height: 100%;
+            width: 100%;
+        }
     </style>
 
 </head>
 
-<body>
+<body style="background-color:#ccf2ff";>
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -100,6 +110,38 @@
                 </div>
             </div>
     </nav>
+
+    <!-- <div class="bg-warning"> -->
+        <!--Slider-->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">
+            <div class="carousel-inner mx-5">
+                <div class="carousel-item active c-item">
+                    <img src="https://source.unsplash.com/1450x480/?Beach" class="d-block w-100 c-image" alt="...">
+                </div>
+                <div class="carousel-item c-item">
+                    <img src="https://source.unsplash.com/1450x480/?Fort" class="d-block w-100 c-image" alt="...">
+                </div>
+                <div class="carousel-item c-item">
+                    <img src="https://source.unsplash.com/1450x480/?Forest" class="d-block w-100 c-image" alt="...">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="text-align: center; font-family: Pacifico,Playfair Display; font-size:30px;">LIVE YOUR LIFE BY A
+            COMPASS, NOT A CLOCK. – ERICA JONG</p>
+    <!-- </div> -->
 
 </body>
 
