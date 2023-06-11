@@ -4,11 +4,14 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def index(request):
     return render(request,"index.html")
 
+@login_required(login_url="/login")
 def plan(request):
     return render(request,"plan.html")
 
@@ -27,14 +30,35 @@ def loginView(request):
             user=User.objects.get(username=username)
         except:
             messages.error(request, "User doesn't exist")
-
-        user=authenticate(request,username=username,password=password)
-
-        if user is not None:
-            login(request,user)
-            return redirect("index")
-
+        
         else:
-            messages.error(request, "Incorrect Password")
+            user=authenticate(request,username=username,password=password)
+
+            if user is not None:
+                login(request,user)
+                return redirect("index")
+
+            else:
+                messages.error(request, "Incorrect Password")
 
     return render(request,"login.html")
+
+def logoutView(request):
+    logout(request)
+    return redirect("index")
+
+def signup(request):
+    form=UserCreationForm()
+
+    if request.method=="POST":
+        form=UserCreationForm(request.POST)
+
+        if form.is_valid():
+            user=form.save()
+            user.save()
+            login(request,user)
+            return redirect('index')
+        else:
+            messages.error(request,"An error occured")
+
+    return render(request,'signup.html', {'form':form})
