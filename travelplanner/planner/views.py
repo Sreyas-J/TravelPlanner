@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
@@ -12,6 +15,3 @@ def about(request):
 
 def contact(request):
     return render(request,"contact.html")
-
-def signup(request):
-    return render(request,"signup.html")
